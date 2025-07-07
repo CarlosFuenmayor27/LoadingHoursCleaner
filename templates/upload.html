@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ESTA File Cleaner</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 80px;
+            background-color: #f2f2f2;
+        }
+        .container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            width: 400px;
+            margin: auto;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            margin-bottom: 30px;
+            color: #333;
+        }
+        input[type="file"] {
+            margin-bottom: 20px;
+        }
+        input[type="submit"] {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #0078d4;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #005a9e;
+        }
+        .success {
+            color: green;
+            margin-top: 30px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Optional logo placeholder -->
+        <!-- <img src="static/logo.png" alt="Company Logo" width="100"> -->
+        <h2>Upload Excel File to Clean</h2>
+        <form method="post" enctype="multipart/form-data">
+            <input type="file" name="file" required><br>
+            <input type="submit" value="Upload and Clean">
+        </form>
+
+        {% if success %}
+            <p class="success">✅ File cleaned successfully!</p>
+            <a href="{{ url_for('download') }}">
+                <button style="margin-top: 10px;">Download Cleaned File</button>
+            </a>
+        {% endif %}
+    </div>
+</body>
+</html>
